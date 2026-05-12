@@ -322,55 +322,38 @@ If yes, do **not** derail setup unless the user explicitly wants to pause the in
 
 # [STAGE 6 — Life shape — 10 min]
 
-Projects, people, habits, admin. Long stage, but everything is **skip if it doesn't apply**. Pick the 1–3 most important items per section; don't exhaustively map the user's life.
+Projects, people, habits, admin — context that makes the user not-a-generic-person. **This stage is a menu, not a script.** Pick the 2–3 areas most relevant to what surfaced in Stage 5 and skip the rest. Test users who got walked through all six areas described it as a quiz — don't do that.
 
 **Open this stage with a short framing on breadth** (don't read verbatim — paraphrase in your own voice):
 
 > *"The strength of a second brain is using it for as many parts of your work and life as possible. The cross-pollination is the point — a side project teaching you something that feeds your day job, a recurring problem in one area helping you fix it elsewhere, me knowing about a doctor's appointment + a trip + a deadline so I can scope timelines that actually work. So in this stage, lean wide — even things that feel personal or unrelated to 'work' are worth mentioning. If you only want to use this for one slice of your life, that's fine too — tell me which slice and we'll prune the rest later."*
 
-Then move into the sub-sections.
+### How to run this stage
 
-### 6a. Work / main activity (skip if not applicable)
+1. Look at what Stage 5 surfaced. The user has probably already told you which 2–3 areas below matter to them. Lead with those.
+2. Don't read bullets back; group questions conversationally and skip anything that obviously doesn't apply.
+3. Move on as soon as you have enough to scaffold meaningful pages. Exhaustive capture is anti-goal — `/remsleep` will fill in detail over time.
+4. If the user only mentions one area, that's fine. One real area beats six shallow ones.
 
-- *What's your role? What do you manage or contribute to?*
-- *If you're on a team: how big, who reports to you, who do you report to?*
-- *Key collaborators or stakeholders worth me remembering?*
-- *Active projects — which are highest priority or at risk?*
-- *Are you hiring? Managing a budget? Presenting to a board?* (only if plausibly relevant — if yes, may want to set `hiring: true` in `config.yaml`)
+### Area menu (pick 2–3)
 
-For each project mentioned, create a placeholder `agent_brain/projects/<slug>/<slug>.md` with the wiki-project template. Don't over-fill — just a stub with status and a one-line summary. If they're working on the project's actual code/drafts, suggest they put the work in `workspace/<slug>/` and cross-link.
+- **Work / main activity** — role, team shape (who reports to whom), key collaborators or stakeholders, active projects, what's at risk. Only probe team size / hiring / budget / board if plausibly relevant. If hiring came up: consider setting `hiring: true` in `config.yaml`.
+- **Personal projects, hobbies, creative work** — what they do outside work, things they're building, training for, collecting, performing. Communities that generate context worth tracking.
+- **People in your life** — the small set where a little memory goes a long way (family, close friends, mentors, partner). No need to exhaustively list everyone.
+- **Habits, routines, tracking** — anything they're building or maintaining (reading, exercise, meditation, language, journaling). Light metrics. Sleep/nutrition/health if they want it recorded.
+- **The admin of life** — places where disorganisation costs them (finances, travel, paperwork). Big life decisions on the table. Upcoming trips, moves, transitions.
 
-### 6b. Personal projects, hobbies, creative work
+### What to write as things come up
 
-- *What do you do outside work? Hobbies, side projects, creative output, hands-on pursuits?*
-- *Anything you're actively building, making, writing, training for, or collecting experience in?*
-- *Communities you're part of that generate context worth tracking?*
+- **For each project mentioned**: create a placeholder `agent_brain/projects/<slug>/<slug>.md` from the wiki-project template — status + one-line summary, no more. If they're working on the project's actual files, suggest `workspace/<slug>/` and cross-link.
+- **For each named person**: create a placeholder `agent_brain/people/<slug>.md` with the wiki-person template. Tag appropriately: `[family]`, `[friend]`, `[mentor]`, `[partner]`, `[team]`, `[stakeholder]`.
+- **For habits and admin items**: lighter — a stub note or a line in `about_user/profile.md` is often enough at this stage.
 
-### 6c. People in your life
-
-- *Who are the people I should help you keep up with? (family, close friends, mentors, a partner)*
-- *Anyone whose context is worth having on hand — their situation, what's going on with them, next time you meet?*
-- *No need to exhaustively list everyone — just the ones where a little memory goes a long way.*
-
-For each named person, create a placeholder `agent_brain/people/<slug>.md` with the wiki-person template. Use appropriate tags: `[family]`, `[friend]`, `[mentor]`, `[partner]`, `[team]`, `[stakeholder]`.
-
-### 6d. Habits, routines, tracking
-
-- *Any habits or routines you're building or maintaining? (reading, exercise, meditation, language practice, journaling)*
-- *Any light metrics worth tracking? (workouts, books, miles, runs, journal days)*
-- *Anything about sleep, nutrition, or health you want recorded?*
-
-### 6e. The admin of life
-
-- *Areas where being disorganised costs you? (finances, travel, paperwork, long-term decisions)*
-- *Big life decisions you're sitting on?*
-- *Upcoming trips, moves, or transitions worth me knowing about?*
-
-### 6f. First hub (optional)
+### Optional: first hub
 
 > *"Have you already accumulated 3+ scattered references on a topic? (Books you've read, models you've tested, recipes you've kept, cities you've researched, papers you've cited.) If yes, that's a great first hub — let's build it now."*
 
-If yes, walk them through creating their first hub in `agent_brain/references/<topic>.md` using the format from `agent_brain/understanding/standards/topic-hubs.md` (you've already read this — explain the format briefly in conversation, don't ask them to read the standard).
+If yes, walk them through creating their first hub in `agent_brain/references/<topic>.md` using the format from `agent_brain/understanding/standards/topic-hubs.md` — explain the format briefly in conversation, don't ask them to read the standard.
 
 ### Stage 6 wrap
 
@@ -571,7 +554,28 @@ Based on the answers, decide which **Optional** skills to install (deactivate th
 - `/transcribe` — install if they record meetings or voice notes. (`/ingest` is core and always installed; the meeting template handles transcripts whether they came from `/transcribe` or were dropped in manually.)
 - `/prep` — install always (works without any MCP).
 
-Connection-gated read-only checks (calendar, slack, email) are templates inside `/check`, not separate skills. They activate automatically when the corresponding MCP is connected — don't ask which to install. Just note for the user which MCPs are worth setting up based on their answers (e.g. "you'll want Google Calendar MCP so `/check calendar` lights up").
+Connection-gated read-only checks (calendar, slack, email) are templates inside `/check`, not separate skills. They activate automatically when the corresponding MCP is connected — don't ask which to install.
+
+### MCP connectors — actively offer setup, don't just mention it
+
+The biggest jump in usefulness from this kit comes when the brain can *see* the user's other tools. Without MCPs they have a great markdown system; with MCPs they have an assistant that actually reads their calendar, drafts Slack messages with context, searches their inbox, and pulls real signal from their daily life. **Most users won't go set up MCPs on their own — they need a nudge plus a guided walkthrough.** Provide both.
+
+Based on the tool answers above, surface the matching MCPs:
+
+- **Google Calendar** — calendar reads/writes; lights up `/check calendar` and morning-brief calendar awareness.
+- **Gmail** — email search, drafts, labels; lights up `/check email` and inbox awareness.
+- **Slack** — channel reads, message sends/drafts, search; lights up `/check slack` and outbound communication drafts.
+- **Notion / Linear / Atlassian (Jira/Confluence) / GitHub** — knowledge and task surfaces, if any of those came up.
+
+Use this framing (paraphrase, don't read verbatim):
+
+> *"I noticed you use {Calendar / Gmail / Slack / ...}. Each one takes about 1–2 minutes to connect — Claude Code's `/mcp` command opens an OAuth login per service. The payoff is big: once connected, I can actually read your calendar, draft Slack messages with context, search your email, instead of just nodding along. Want me to walk you through it now? We can do all of them in one pass, or just one to start. If you'd rather, I can drop a checklist into a task and you do it later."*
+
+**If they say yes**, lead them through `/mcp` per service, one at a time. After each auth, run a tiny smoke test to confirm the connection works (`list_calendars`, `list_labels`, `slack_search_users` for own name, etc.). Record which connectors landed in `agent_brain/about_user/tooling.md` (create the file if missing) so other skills can key off it. If a connection misbehaves, troubleshoot with the user — they shouldn't have to debug alone.
+
+**If they say "later" or "checklist"**, invoke `/create-task` with input along the lines of *"Connect MCPs ({list of suggested services}); due in 3 days, priority p2, project second-brain-setup, category setup"*. The task will surface in `/morning-brief briefing` when the due date arrives.
+
+Don't gate Stage 10 completion on MCP setup — they can always add later — but make sure the offer is genuinely on the table, not buried.
 
 For Optional skills the user doesn't want active right now, **move them to `.claude/skills-disabled/<skill>/`** (don't trash them). They stay in the vault, recoverable later by saying *"activate <skill>"*. Training-wheels tips for these skills will continue to suggest activation if useful.
 
@@ -782,6 +786,7 @@ Tell the user, in their `{{LANGUAGE}}`:
 - [ ] `agent_brain/_index.md` lists all created pages
 - [ ] `.claude/skills/` contains all 8 core skills (check, create-task, handover, ingest, learn, morning-brief, remsleep, resume-handover)
 - [ ] `.claude/skills/` also contains the optional skills the user chose at stage 10; un-chosen optional skills are at `.claude/skills-disabled/<name>/`
+- [ ] MCP setup was offered at Stage 10 — either connectors are wired (smoke-tested + recorded in `agent_brain/about_user/tooling.md`) or a deferred `connect-mcps` task exists
 - [ ] `.claude/skills/morning-brief/phases/briefing.md` has the user's chosen light ritual blocks uncommented; unchosen ones deleted
 - [ ] No `{{...}}` placeholder remains in generated live files, except intentional examples in docs/templates
 - [ ] `agent_brain/tasks/try-companion-tools.md` exists with a `due_date` 7 days from setup completion
