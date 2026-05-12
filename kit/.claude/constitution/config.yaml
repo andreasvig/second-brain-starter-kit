@@ -1,0 +1,22 @@
+# Runtime flags. Skills with conditional behavior read this at startup.
+# Generated from setup interview; edit any time.
+
+# Core flags
+self_reflection: false      # Reflection-question generation during /remsleep and morning-brief nudges
+training_wheels: true       # New-user mode: append a rotating "TIP FROM <assistant>:" to every response. User can turn off any time ("turn off training wheels"); see training-wheels.md.
+
+# /morning-brief phase flags
+feeds: false                # /morning-brief feeds phase — ingests sources from agent_brain/about_user/feeds.md
+daily_research: false       # /morning-brief research phase — pulls from a user-defined external research source (S3, API, scraped page, etc.). Skeleton only; user fills in the source during setup.
+news_scan: false            # /morning-brief news phase — daily scan-and-draft for a topical post. Customize domain + voice + output format during setup.
+
+# Light ritual flags — set true for each morning ritual chosen at setup. Read by /morning-brief briefing phase.
+daily_curiosity: false
+gratitude: false
+habit_checkin: false
+weekly_review: false
+tracked_people_pulse: false
+project_pulse: false
+
+# Domain flag (only set true if the user genuinely manages this)
+hiring: false

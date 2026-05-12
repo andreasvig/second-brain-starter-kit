@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -f \"$CLAUDE_PROJECT_DIR/artifacts/.last-learn\" ] && [ $(find \"$CLAUDE_PROJECT_DIR/artifacts/.last-learn\" -mmin -30 2>/dev/null | wc -l) -gt 0 ]; then exit 0; else echo '⚠️  Consider running /learn first to preserve durable knowledge before compaction. Ctrl+C to abort and run /learn, or let compaction proceed.' >&2; exit 0; fi"
+          }
+        ]
+      }
+    ]
+  }
+}

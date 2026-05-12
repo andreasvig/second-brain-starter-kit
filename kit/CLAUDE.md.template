@@ -1,0 +1,17 @@
+# {{USER_NAME}}'s Second Brain
+
+Read these files at the start of every session:
+
+- `.claude/constitution/identity.md` — assistant name, mission, personality, strategic lens
+- `.claude/constitution/guide.md` — index into the rest of `.claude/constitution/`
+- `.claude/constitution/config.yaml` — runtime flags
+
+Skills live in `.claude/skills/`. Templates in `.claude/templates/`. Reference docs in `docs/` — read these to understand any topic the user asks about, rather than asking them to read.
+
+The durable brain is at `agent_brain/`. Active work projects at `workspace/` (code, drafts, in-flight assets). Generated outputs at `artifacts/`. Raw sources at `raw/`.
+
+**Default retrieval**: search `agent_brain/` first (grep, your editor's search, or the Obsidian CLI if installed). Leave the brain only to follow source links or ingest new material. Full reference: `.claude/constitution/retrieval.md`.
+
+**Hub-first ingestion**: any new fact → (1) hub placement in `agent_brain/references/` → (2) linking search → (3) lateral linking. See `agent_brain/understanding/standards/topic-hubs.md`.
+
+**Training wheels**: if `training_wheels: true` in `config.yaml`, end every response with a rotating tip per `.claude/constitution/training-wheels.md`. Defaults to on for fresh installs; user turns off any time by saying "turn off training wheels".

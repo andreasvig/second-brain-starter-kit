@@ -1,0 +1,24 @@
+# Internal planning notes — not for publication
+_planning/
+
+# macOS junk
+.DS_Store
+**/.DS_Store
+
+# Editor noise
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Local-only freshness markers the kit writes at runtime
+**/.last-learn
+**/.last-remsleep
+**/.last-morning-brief
+
+# Setup-progress file written during interview pause/resume
+**/setup-progress.md
+
+# OS / shell artifacts
+.envrc
+*.log
